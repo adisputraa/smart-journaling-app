@@ -1,11 +1,10 @@
-package com.journalingapp.smart_journaling_app;
+package com.journalingapp.smart_journaling_app.service;
 
 import com.journalingapp.smart_journaling_app.dto.JournalRequestDto;
 import com.journalingapp.smart_journaling_app.model.Journal;
 import com.journalingapp.smart_journaling_app.model.User;
 import com.journalingapp.smart_journaling_app.repo.JournalRepository;
 import com.journalingapp.smart_journaling_app.repo.UserRepository;
-import com.journalingapp.smart_journaling_app.service.JournalService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class JournalServiceTest {
+public class JournalServiceUnitTest {
 
     @Mock
     private JournalRepository journalRepository;
