@@ -64,9 +64,23 @@
 			<version>1.18.34</version> <!-- versi terbaru stabil -->
 			<scope>provided</scope>
 		</dependency>
+		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mockito</groupId>
+					<artifactId>mockito-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Mockito Inline (fix final class & agent warning) -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>5.2.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -100,6 +114,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+				<configuration>
+					<argLine>
+						--add-opens java.base/java.lang=ALL-UNNAMED
+						--add-opens java.base/java.util=ALL-UNNAMED
+						-XX:+EnableDynamicAgentLoading
+					</argLine>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
